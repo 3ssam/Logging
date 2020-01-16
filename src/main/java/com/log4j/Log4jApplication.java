@@ -3,6 +3,7 @@ package com.log4j;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.xml.DOMConfigurator;
 
 public class Log4jApplication {
 
@@ -10,10 +11,10 @@ public class Log4jApplication {
 	 
     public static void main(String[] args)
     {
-        // PropertiesConfigurator is used to configure logger from properties file
-        PropertyConfigurator.configure("log4j.properties");
+        //DOMConfigurator is used to configure logger from xml configuration file
+        DOMConfigurator.configure("F:\\eclipse - last version\\workshop\\MavenTestProject\\src\\main\\resources\\log4j.xml");
  
-        // Log in console
-        logger.debug("Log4j console appender configuration is successful !!");
+        //Log in console in and log file
+        logger.debug("Log4j appender configuration is successful !!");
     }
 }
