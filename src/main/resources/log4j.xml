@@ -2,28 +2,33 @@
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 <log4j:configuration>
 	<appender name="roll-by-size"
-		class="org.apache.log4j.RollingFileAppender">
-		<param name="file" value="target/log4j/roll-by-size/app.log" />
-		<param name="MaxFileSize" value="5KB" />
-		<param name="MaxBackupIndex" value="2" />
+		class="org.apache.log4j.rolling.RollingFileAppender">
+		<rollingPolicy
+			class="org.apache.log4j.rolling.FixedWindowRollingPolicy">
+			<param name="ActiveFileName"
+				value="target/log4j/roll-by-size/app.log" />
+			<param name="FileNamePattern"
+				value="target/log4j/roll-by-size/app.%i.log.gz" />
+			<param name="MinIndex" value="7" />
+			<param name="MaxIndex" value="17" />
+		</rollingPolicy>
+		<triggeringPolicy
+			class="org.apache.log4j.rolling.SizeBasedTriggeringPolicy">
+			<param name="MaxFileSize" value="5120" />
+		</triggeringPolicy>
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern"
 				value="%d{yyyy-MM-dd HH:mm:ss} %-5p %m%n" />
 		</layout>
 	</appender>
-<!-- 	<logger name="com.log4j.package">
-		<level value="debug" />
-		<appender-ref ref="console" />
-	</logger>
+
+	<!-- <logger name="com.log4j.package"> <level value="debug" /> <appender-ref 
+		ref="console" /> </logger> <root> <priority value="debug" /> <appender-ref 
+		ref="console" /> </root> -->
+
 
 	<root>
-		<priority value="debug" />
-		<appender-ref ref="console" />
-	</root> -->
-	
-	 
-  <root>
-    <priority value ="debug"></priority>
-    <appender-ref ref="roll-by-size"></appender-ref>
-  </root>
+		<priority value="debug"></priority>
+		<appender-ref ref="roll-by-size"></appender-ref>
+	</root>
 </log4j:configuration>
