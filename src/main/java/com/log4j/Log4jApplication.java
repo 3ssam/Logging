@@ -11,7 +11,7 @@ public class Log4jApplication {
 
 	public static void main(String[] args) throws InterruptedException {
         PropertyConfigurator.configure("F:\\eclipse - last version\\workshop\\MavenTestProject\\src\\main\\resources\\log4j.xml");
-		for (long i = 1; i <= Long.MAX_VALUE; i++) {
+		for (long i = 1; i <= 2000; i++) {
 			logger.info("This is the " + i + " time I say 'Hello World'.");
 			//Thread.sleep(100);
 		}
