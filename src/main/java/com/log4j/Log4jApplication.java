@@ -7,14 +7,13 @@ import org.apache.log4j.xml.DOMConfigurator;
 
 public class Log4jApplication {
 
-	static final Logger logger = Logger.getLogger(Log4jApplication.class);
-	 
-    public static void main(String[] args)
-    {
-        //DOMConfigurator is used to configure logger from xml configuration file
-        DOMConfigurator.configure("F:\\eclipse - last version\\workshop\\MavenTestProject\\src\\main\\resources\\log4j.xml");
- 
-        //Log in console in and log file
-        logger.debug("Log4j appender configuration is successful !!");
-    }
+	private static Logger logger = Logger.getLogger(Log4jApplication.class);
+
+	public static void main(String[] args) throws InterruptedException {
+        PropertyConfigurator.configure("F:\\eclipse - last version\\workshop\\MavenTestProject\\src\\main\\resources\\log4j.xml");
+		for (long i = 1; i <= 2000; i++) {
+			logger.info("This is the " + i + " time I say 'Hello World'.");
+			//Thread.sleep(100);
+		}
+	}
 }
