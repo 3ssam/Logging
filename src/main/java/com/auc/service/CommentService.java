@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PreDestroy;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -17,9 +18,9 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.apache.log4j.Logger;
 import org.codehaus.jettison.json.JSONArray;
 import org.json.simple.JSONObject;
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.auc.dao.CommentDAO;
@@ -34,7 +35,8 @@ import com.auc.utility.ResponseWriterUtility;
 public class CommentService {
 
 	private CommentDAO dao = new CommentsDAOImpl();
-	private final static Logger _LOGGER = LoggerFactory.getLogger(CommentService.class);
+	private final static Logger _LOGGER = Logger.getLogger(CommentService.class);
+	
 
 	@GET
 	@Path("/{recordId}")
